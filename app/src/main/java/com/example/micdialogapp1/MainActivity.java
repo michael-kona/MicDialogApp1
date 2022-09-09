@@ -54,22 +54,32 @@ public class MainActivity extends AppCompatActivity  {
     }
     public void btn_pick_time(View v)
     {
+        int dH,dMin;
+        Calendar c=Calendar.getInstance();
+        dH=c.get(Calendar.HOUR);
+        dMin=c.get(Calendar.MINUTE);
         TimePickerDialog tpd=new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int i, int i1) {
                 Toast.makeText(MainActivity.this,i+"H:,"+i1+"m", Toast.LENGTH_SHORT).show();
             }
-        }, Calendar.HOUR_OF_DAY, Calendar.MINUTE, false);
+        }, dH, dMin, false);
         tpd.show();
     }
     public void btn_pick_date(View v)
     {
+        int dYear,dMon,dDay;
+        Calendar c=Calendar.getInstance();
+        dYear=c.get(Calendar.YEAR);
+        dMon=c.get(Calendar.MONTH);
+        dDay =c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog dpd=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2)
+            {
                 Toast.makeText(MainActivity.this,i+"Y:,"+i1+"m"+i2+"d", Toast.LENGTH_LONG).show();
             }
-        }, 2022, 9, 9);
+        }, dYear,dMon,dDay);
         dpd.setTitle("Pick a date please");
         dpd.setMessage("Hello I'm Michael");
         dpd.show();
